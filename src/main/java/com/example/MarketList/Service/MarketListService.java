@@ -1,18 +1,25 @@
 package com.example.MarketList.Service;
 
 import com.example.MarketList.Entity.MarketListEntity;
-import com.example.MarketList.Repository.ListRepository;
+import com.example.MarketList.Repository.MarketListRepository;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class MarketListService extends MarketListEntity {
 
+    public MarketListRepository marketListRepository;
 
-    public void setProductName(String productName) {
-        super.setProductName((productName));
+    public MarketListService(MarketListRepository marketListRepository){
+        this.marketListRepository = marketListRepository;
     }
 
-    public void setProductValue(Long productValue){
-        super.setProductValue(productValue);
-    }
+    public MarketListEntity saveProduct(String productName, Long productValue) {
+
+        MarketListEntity newProduct = new MarketListEntity();
+        newProduct.setProductName(productName);
+        newProduct.setProductValue(productValue);
+
+       return this.marketListRepository.save(newProduct);
+   }
 }
