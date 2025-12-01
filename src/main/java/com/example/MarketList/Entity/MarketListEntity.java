@@ -15,11 +15,14 @@ public class MarketListEntity {
     @Getter
     private long id;
 
-    @Getter
     @Setter
     private String productName;
 
+    public String getProductName() {
+        return productName;
+    }
+
     @Setter
     @Getter
-    private long productValue;
+    private int productValue;
 }

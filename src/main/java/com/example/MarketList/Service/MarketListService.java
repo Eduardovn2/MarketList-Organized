@@ -14,7 +14,7 @@ public class MarketListService extends MarketListEntity {
         this.marketListRepository = marketListRepository;
     }
 
-    public MarketListEntity saveProduct(String productName, Long productValue) {
+    public MarketListEntity saveProduct(String productName, int productValue) {
 
         MarketListEntity newProduct = new MarketListEntity();
         newProduct.setProductName(productName);

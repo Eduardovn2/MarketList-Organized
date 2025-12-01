@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ListRepository extends JpaRepository<MarketListEntity, Long> {
+public interface MarketListRepository extends JpaRepository<MarketListEntity, Long> {
 }
