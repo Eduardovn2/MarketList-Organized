@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -45,4 +46,8 @@ public class MarketListService extends MarketListEntity {
        return marketListRepository.save(product);
     }
 
+    //Procura tudo que contem em marketlistrepository.
+    public List<MarketListEntity> getMarketListRepository() {
+        return marketListRepository.findAll();
+    }
 }

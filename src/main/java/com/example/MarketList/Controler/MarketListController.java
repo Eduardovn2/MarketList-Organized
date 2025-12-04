@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.yaml.snakeyaml.error.Mark;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/MarketList")
 public class MarketListController{
@@ -42,7 +44,12 @@ public class MarketListController{
             @RequestBody MarketListDTO dto){
 
         return marketListService.updateProduct(id, dto);
+    }
 
+    //Retorna a lista completa de id, nome de produto e valor.
+    @GetMapping("/GetMarketList")
+    public List<MarketListEntity> getMarketList(){
+        return marketListService.getMarketListRepository();
     }
 
 }
