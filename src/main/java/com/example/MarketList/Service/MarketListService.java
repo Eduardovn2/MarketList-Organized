@@ -1,7 +1,9 @@
 package com.example.MarketList.Service;
 
+import Exceptions.IdNotFound;
 import com.example.MarketList.DTO.MarketListDTO;
 import com.example.MarketList.Entity.MarketListEntity;
+import com.example.MarketList.MarketListApplication;
 import com.example.MarketList.Repository.MarketListRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -36,7 +38,7 @@ public class MarketListService extends MarketListEntity {
 
         //Procura um id requisitado. caso nao ache, dispara uma exception.
         MarketListEntity product= marketListRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("O ID " + id + " nao esta cadastrado."));
+                .orElseThrow(() -> new IdNotFound(id));
 
         //Seta novos nomes e valores.
        product.setProductName(dto.getProductName());
@@ -49,5 +51,13 @@ public class MarketListService extends MarketListEntity {
     //Procura tudo que contem em marketlistrepository.
     public List<MarketListEntity> getMarketListRepository() {
         return marketListRepository.findAll();
+    }
+
+    public List<MarketListEntity> deleteProduct(@PathVariable long id){
+        marketListRepository.findById(id)
+                .orElseThrow(() -> new IdNotFound(id));
+
+        marketListRepository.deleteById(id);
+        return getMarketListRepository();
     }
 }
