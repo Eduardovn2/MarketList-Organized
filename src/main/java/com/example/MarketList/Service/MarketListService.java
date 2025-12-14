@@ -53,11 +53,21 @@ public class MarketListService extends MarketListEntity {
         return marketListRepository.findAll();
     }
 
-    public List<MarketListEntity> deleteProduct(@PathVariable long id){
+    public List<MarketListEntity> deleteProductById(@PathVariable long id){
         marketListRepository.findById(id)
                 .orElseThrow(() -> new IdNotFound(id));
 
         marketListRepository.deleteById(id);
         return getMarketListRepository();
     }
+    /*
+    * public List<MarketListEntity> deleteProductByName(@PathVariable String name){
+        marketListRepository.find(name)
+                .orElseThrow(() -> new IdNotFound(name));
+
+        marketListRepository.deleteById(name);
+        return getMarketListRepository();
+    */
+
+
 }
